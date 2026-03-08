@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: hsl(160 80% 40%);
+  --color-primary-foreground: white;
+  --color-background: white;
+  --color-foreground: hsl(222 47% 11%);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --background: white;
+    --foreground: 222 47% 11%;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+  }
+
+  body {
+    @apply antialiased text-foreground bg-background font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-semibold;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+
+  .dark .glass-card {
+    @apply bg-black/40 backdrop-blur-lg border border-white/10 shadow-2xl;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-emerald-600 text-white rounded-full font-semibold transition-all duration-300 hover:bg-emerald-700 hover:shadow-lg active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-emerald-600 border-2 border-emerald-600 rounded-full font-semibold transition-all duration-300 hover:bg-emerald-50 active:scale-95;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600 font-bold;
+  }
+}
